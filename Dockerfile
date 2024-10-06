@@ -28,3 +28,5 @@ FROM alpine:latest
 WORKDIR /
 
 COPY --from=builder /workspace/build/gossip .
+
+ENTRYPOINT [ "/gossip" ]

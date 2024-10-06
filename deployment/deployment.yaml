@@ -6,6 +6,7 @@ metadata:
     app: gossip
 spec:
   replicas: 3
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: gossip
@@ -15,18 +16,17 @@ spec:
         app: gossip
     spec:
       containers:
-        - image: gcr.io/cedi/gossip-experiments:latest
+        - image: ghcr.io/cedi/gossip-experiment:main
           name: gossip
-          cmd: "/gossip"
+          command:
+            - "/gossip"
           args:
-            - memberlist
-            - join
-            - --config
-            - lan
-            - --name
-            - node3
-            - --port
-            - 7948
+            - "memberlist"
+            - "join"
+            - "--config"
+            - "lan"
+            - "--port"
+            - "7946"
             - "gossip.gossip.svc.cluster.local:7946"
           ports:
             - containerPort: 7946

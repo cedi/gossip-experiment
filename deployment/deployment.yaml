@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gossip-testing
+  labels:
+    app: gossip
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gossip
+  template:
+    metadata:
+      labels:
+        app: gossip
+    spec:
+      containers:
+        - image: gcr.io/cedi/gossip-experiments:latest
+          name: gossip
+          ports:
+            - containerPort: 7946
+              name: http

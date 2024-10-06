@@ -1,5 +1,5 @@
 # Build the urlshortener binary
-FROM golang:1.23 as builder
+FROM golang:1.23 AS builder
 
 WORKDIR /workspace
 
@@ -22,11 +22,12 @@ RUN go build -o build/gossip ./main.go
 # Use distroless as minimal base image to package the urlshortener binary
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
 # TODO: For production re-enable distroless!
-#FROM gcr.io/distroless/static:nonroot
-FROM alpine:latest
+# FROM gcr.io/distroless/static:nonroot AS final
+# FROM alpine:latest
 
 WORKDIR /
 
-COPY --from=builder /workspace/build/gossip .
+# COPY --from=builder /workspace/build/gossip .
+EXPOSE 7946
 
-ENTRYPOINT [ "/gossip" ]
+# ENTRYPOINT [ "/gossip", "memberlist", "join", "--config", "lan", "-port", "7946", "gossip.gossip.svc.cluster.local:7946"]

@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
         - image: ghcr.io/cedi/gossip-experiment:main
+          imagePullPolicy: Always
           name: gossip
           command:
-            - "/gossip"
-          args:
+            - "/workspace/build/gossip"
             - "memberlist"
             - "join"
             - "--config"

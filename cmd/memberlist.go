@@ -34,8 +34,7 @@ func init() {
 	})
 
 	memberlistJoinCmd.Flags().BoolVar(&noWait, "nowait", false, "exit without waiting")
-	memberlistJoinCmd.Flags().StringVarP(&nodeName, "name", "n", "", "Node Name")
-	memberlistJoinCmd.MarkFlagRequired("name")
+	memberlistJoinCmd.Flags().StringVarP(&nodeName, "name", "n", hostname, "Node Name")
 
 	memberlistJoinCmd.Flags().IntVar(&nodePort, "port", 7947, "Port to bind to")
 	memberlistJoinCmd.MarkFlagRequired("port")

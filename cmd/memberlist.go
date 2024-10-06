@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"os"
+
 	"github.com/hashicorp/memberlist"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -22,8 +24,9 @@ func init() {
 	})
 
 	memberlistCreateCmd.Flags().BoolVar(&noWait, "nowait", false, "exit without waiting")
-	memberlistCreateCmd.Flags().StringVarP(&nodeName, "name", "n", "", "Node Name")
-	memberlistCreateCmd.MarkFlagRequired("name")
+
+	hostname, _ := os.Hostname()
+	memberlistCreateCmd.Flags().StringVarP(&nodeName, "name", "n", hostname, "Node Name")
 
 	memberlistJoinCmd.Flags().StringVarP(&defaultConfigType, "config", "c", "local", "default config type for memberlist")
 	memberlistJoinCmd.RegisterFlagCompletionFunc("config", func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {

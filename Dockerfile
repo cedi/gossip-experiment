@@ -27,4 +27,4 @@ FROM alpine:latest
 
 WORKDIR /
 
-COPY --from=builder /workspace/gossip .
+COPY --from=builder /workspace/build/gossip .

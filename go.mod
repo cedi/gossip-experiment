@@ -5,7 +5,7 @@ go 1.22.5
 require (
 	github.com/hashicorp/memberlist v0.5.3
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 )
 
 require (

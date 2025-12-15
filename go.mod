@@ -3,7 +3,7 @@ module github.com/cedi/gossip-experiment
 go 1.22.5
 
 require (
-	github.com/hashicorp/memberlist v0.5.3
+	github.com/hashicorp/memberlist v0.5.4
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.10.1
 )
